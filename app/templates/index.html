@@ -1,0 +1,67 @@
+<!-- By: Universal Impact -->
+<!-- https://github.com/universalimpact -->
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<html lang="en">
+<center>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search News</title>
+    <header>
+        <p></p>
+        <h3>News Search App</h3>
+        <h6><i>Developed by <a href="https://github.com/universalimpact">universalimpact</a></i></h6>
+    </header>
+</head>
+
+<!-- News API Header with User Form -->
+<hr style="height:4px;border:none;color:black;background-color:black;">
+<body>
+    <h1></h1>
+    <table style="width:30%">
+        <tr>
+          <th><h4>Search for News:</h4></th>
+          <th>
+       
+    <form action='/articles/' method="POST">
+        <input height = "400" width = "100" type="text" placeholder="Enter a search term" name='keyword'>
+    </th>
+        </tr>
+    </table>
+        <table style="width:35%;">
+            <tr>
+                <th>Select Category: </th>
+                <td><input type="radio" name="category" value="entertainment"> Entertainment</input></td>
+                <td><input type="radio" name="category" value="sports"> Sports</input></td>
+                <td><input type="radio" name="category" value="technology"> Technology</input></td>
+            </tr>
+        </table>
+        
+        <h4></h4>
+        <button type="submit" style="background-color:black;color:white">Get News</button>
+    </form>
+    <hr style="height:4px;border:none;color:black;background-color:black;">
+</center>
+ 
+<!-- Display all article information -->
+{% for post in news %}
+  <center>
+  <h2>{{post['title']}}</h2>
+  <h6>Date/Author: <i>{{post['publishedAt']}} by {{post['author']}}</i></h6>
+  <p><b>Link to Article:</b> <a href="{{post['url']}}" target = "_blank">{{post['url']}}</a></p>
+  <img src="{{post['urlToImage']}}" width="500" height="250" alt="Paywall">
+  <table width=50%>
+      <tr>
+          <td><b>Description:</b> {{post['description']}}</td>
+      </tr>
+  </table>
+  <hr style="height:1px;border:none;color:black;background-color:black;">
+</center>
+{% endfor %}
+     
+</body>
+</html>
